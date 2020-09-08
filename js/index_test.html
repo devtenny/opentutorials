@@ -1,0 +1,241 @@
+<html>
+  <head>
+    <title>생활코딩 WEB2 - js</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <h1><a href="index.html">WEB2 - js</a></h1>
+    <hr />
+    <div id="ex01">
+      <h3>제어할 태그 선택하기</h3>
+      <input type="button" value="라이트모드" onclick="
+        document.querySelector('#ex01').style.backgroundColor = 'white';
+        document.querySelector('#ex01').style.color = 'black';
+      " />
+      <input type="button" value="다크모드" onclick="
+        document.querySelector('#ex01').style.backgroundColor = 'black';
+        document.querySelector('#ex01').style.color = 'white';
+      " />
+
+      <ol>
+        <li><a href="html.html">HTML</a></li>
+        <li><a href="css.html">CSS</a></li>
+        <li><a href="js.html">JavaScript</a></li>
+      </ol>
+    </div>
+
+
+    <hr />
+    <div id="ex02">
+      <h3>조건문 활용</h3>
+      <input id="night_day" type="button" value="다크모드" onclick="
+        if(document.querySelector('#night_day').value === '다크모드') {
+          document.querySelector('#ex02').style.backgroundColor = 'black';
+          document.querySelector('#ex02').style.color = 'white';
+          document.querySelector('#night_day').value = '라이트모드';
+        } else {
+          document.querySelector('#ex02').style.backgroundColor = 'white';
+          document.querySelector('#ex02').style.color = 'black';
+          document.querySelector('#night_day').value = '다크모드';
+        }
+      " />
+
+      <ol>
+        <li><a href="html.html">HTML</a></li>
+        <li><a href="css.html">CSS</a></li>
+        <li><a href="js.html">JavaScript</a></li>
+      </ol>
+    </div>
+
+    <hr />
+    <div id="ex03">
+      <h3>리팩토링(refactoring)</h3>
+      <input id="night_day" type="button" value="다크모드" onclick="
+        var target = document.querySelector('#ex03')
+        if(this.value === '다크모드') {
+          target.style.backgroundColor = 'black';
+          target.style.color = 'white';
+          this.value = '라이트모드';
+        } else {
+          target.style.backgroundColor = 'white';
+          target.style.color = 'black';
+          this.value = '다크모드';
+        }
+      " />
+
+      <ol>
+        <li><a href="html.html">HTML</a></li>
+        <li><a href="css.html">CSS</a></li>
+        <li><a href="js.html">JavaScript</a></li>
+      </ol>
+    </div>
+
+    <hr />
+    <div id="ex04">
+      <h3>배열과 반복문의 활용</h3>
+      <input id="night_day" type="button" value="다크모드" onclick="
+        var target = document.querySelector('#ex04')
+        if(this.value === '다크모드') {
+          target.style.backgroundColor = 'black';
+          target.style.color = 'white';
+          this.value = '라이트모드';
+
+          var alist = document.querySelectorAll('#ex04 a');
+          var i = 0;
+          while(i < alist.length) {
+            alist[i].style.color = 'lightblue';
+            i += 1;
+          }
+
+        } else {
+          target.style.backgroundColor = 'white';
+          target.style.color = 'black';
+          this.value = '다크모드';
+
+          var alist = document.querySelectorAll('#ex04 a');
+          var i = 0;
+          while(i < alist.length) {
+            alist[i].style.color = 'blue';
+            i += 1;
+          }
+        }
+      " />
+
+      <ol>
+        <li><a href="html.html">HTML</a></li>
+        <li><a href="css.html">CSS</a></li>
+        <li><a href="js.html">JavaScript</a></li>
+      </ol>
+    </div>
+
+    <hr />
+    <div id="ex05">
+      <h3>함수의 활용</h3>
+      <script>
+      function nightDayHandler(self) {
+        var target = document.querySelector('#ex05')
+        if(self.value === '다크모드') {
+          target.style.backgroundColor = 'black';
+          target.style.color = 'white';
+          self.value = '라이트모드';
+
+          var alist = document.querySelectorAll('#ex05 a');
+          var i = 0;
+          while(i < alist.length) {
+            alist[i].style.color = 'lightblue';
+            i += 1;
+          }
+
+        } else {
+          target.style.backgroundColor = 'white';
+          target.style.color = 'black';
+          self.value = '다크모드';
+
+          var alist = document.querySelectorAll('#ex05 a');
+          var i = 0;
+          while(i < alist.length) {
+            alist[i].style.color = 'blue';
+            i += 1;
+          }
+        }
+      }
+      </script>
+      <input id="night_day" type="button" value="다크모드" onclick="nightDayHandler(this)" />
+
+      <ol>
+        <li><a href="html.html">HTML</a></li>
+        <li><a href="css.html">CSS</a></li>
+        <li><a href="js.html">JavaScript</a></li>
+      </ol>
+    </div>
+
+    <hr />
+    <div id="ex06">
+      <h3>객체예고</h3>
+      <script>
+      function LinksSetColor(color) {
+        var alist = document.querySelectorAll('#ex06 a');
+        var i = 0;
+        while(i < alist.length) {
+          alist[i].style.color = color;
+          i += 1;
+        }
+      }
+      function BodySetColor(color) {
+        document.querySelector('#ex06').style.color = color;
+      }
+      function BodySetBackgroundColor(color) {
+        document.querySelector('#ex06').style.backgroundColor = color;
+      }
+      function nightDayHandler(self) {
+        var target = document.querySelector('#ex06')
+        if(self.value === '다크모드') {
+          BodySetBackgroundColor('black');
+          BodySetColor('white');
+          self.value = '라이트모드';
+          LinksSetColor('lightblue')
+        } else {
+          BodySetBackgroundColor('white');
+          BodySetColor('black');
+          self.value = '다크모드';
+          LinksSetColor('blue')
+        }
+      }
+      </script>
+      <input id="night_day" type="button" value="다크모드" onclick="nightDayHandler(this)" />
+
+      <ol>
+        <li><a href="html.html">HTML</a></li>
+        <li><a href="css.html">CSS</a></li>
+        <li><a href="js.html">JavaScript</a></li>
+      </ol>
+    </div>
+
+    <hr />
+    <div id="ex07">
+      <h3>객체활용</h3>
+      <script>
+      var Links = {
+        setColor: function(color) {
+          var alist = document.querySelectorAll('#ex07 a');
+          var i = 0;
+          while(i < alist.length) {
+            alist[i].style.color = color;
+            i += 1;
+          }
+        }
+      }
+      var Body = {
+        setColor: function(color) {
+          document.querySelector('#ex07').style.color = color;
+        },
+        setBackgroundColor: function(color) {
+          document.querySelector('#ex07').style.backgroundColor = color;
+        }
+      }
+
+      function nightDayHandler(self) {
+        if(self.value === '다크모드') {
+          Body.setBackgroundColor('black');
+          Body.setColor('white');
+          self.value = '라이트모드';
+          Links.setColor('lightblue')
+        } else {
+          Body.setBackgroundColor('white');
+          Body.setColor('black');
+          self.value = '다크모드';
+          Links.setColor('blue')
+        }
+      }
+      </script>
+      <input id="night_day" type="button" value="다크모드" onclick="nightDayHandler(this)" />
+
+      <ol>
+        <li><a href="html.html">HTML</a></li>
+        <li><a href="css.html">CSS</a></li>
+        <li><a href="js.html">JavaScript</a></li>
+      </ol>
+    </div>
+
+  </body>
+</html>
